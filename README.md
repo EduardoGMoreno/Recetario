@@ -11,4 +11,8 @@ Recetario es una aplicación móvil inspirada en Uber Eats que permite explorar 
 -  Botones de navegación.
 -  Diseño elegante con colores en negro y verde.
 
+![Vista previa](Images/Screenshot_20250306_134716_Recetario.jpg)
+![Vista previa](Images/Screenshot_20250306_134729_Recetario.jpg)
+
+
 
