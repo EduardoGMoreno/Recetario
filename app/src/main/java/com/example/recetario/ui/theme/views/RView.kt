@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -23,6 +24,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -42,9 +44,9 @@ import androidx.navigation.compose.NavHost
 fun Recetario(navController: NavController) {
     val imagenes = listOf(
         R.drawable.cajun to "receta1",
-        R.drawable.salchichas to "receta2",
-        R.drawable.papas to "receta3",
-        R.drawable.alitas to "receta4"
+        R.drawable.ceviche to "receta2",
+        R.drawable.pay to "receta3",
+        R.drawable.brownie to "receta4"
     )
 
     Scaffold(
@@ -52,15 +54,15 @@ fun Recetario(navController: NavController) {
             CenterAlignedTopAppBar(
                 title = { Text(text = "Recetas", color = Color.White) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color.Red
+                    containerColor = Color.Black
                 )
             )
         }
     ) { paddingValues ->
         Column(
             modifier = Modifier
-                .padding(top = 60.dp)
                 .padding(paddingValues)
+                .padding(30.dp)
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -71,16 +73,17 @@ fun Recetario(navController: NavController) {
                     contentDescription = destino,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(175.dp),
+                        .height(175.dp)
+                        .clip(RoundedCornerShape(16.dp)),
                     contentScale = ContentScale.FillWidth
                 )
 
                 MainButton(
                     name = "Ver Receta",
-                    backcolor = Color.Red,
+                    backcolor = Color(0xFF06C167),
                     color = Color.White,
                     onClick = {
-                        navController.navigate(destino) // Ahora sí navega correctamente
+                        navController.navigate(destino)
                     }
                 )
             }
@@ -89,14 +92,13 @@ fun Recetario(navController: NavController) {
 }
 
 @Composable
-private fun ContentView(){
+private fun ContentView() {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    )
-    {
-        MainButton("Ir", Color.Blue, Color.White) {
+    ) {
+        MainButton("Ir", Color(0xFF06C167), Color.White) {
             Log.d("Ir", "")
         }
     }
